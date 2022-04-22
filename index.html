@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maze</title>
+    <link rel="stylesheet" href="style/index.css">
+</head>
+
+<body>
+    <div class="gameMenuContainer">
+        <div class="gameMenu">
+            <select class="gameLevel">
+                <option value="easy">Easy</option>
+                <option value="hard">Hard</option>
+                <option value="difficult">Difficult</option>
+            </select>
+            <p class="newGame">Start Game</p>
+        </div>
+    </div>
+    <div class="gameBoardContainer"></div>
+    <div class="gameMobileControllContainer">
+        <button class="upBotton"><img style="transform: rotate(270deg);" src="Assets/rightArrow.svg" alt="->"></button>
+        <div class="middleButtonContainer">
+            <button class="leftButton"><img style="transform: rotate(180deg);" src="Assets/rightArrow.svg" alt="->"></button>
+            <button class="downBotton"><img style="transform: rotate(90deg);" src="Assets/rightArrow.svg" alt="->"></button>
+            <button class="rightButton"><img src="Assets/rightArrow.svg" alt="->"></button>
+        </div>
+    </div>
+    <button class="home"><img src="Assets/home.svg" alt="Home"></button>
+    <div class="gameFinishedModalContainer">
+        <div class="gameModal">
+            <p class="modalTitle">Well Done</p>
+            <img src="Assets/celeb.gif" alt="wining image">
+            <p class="playAgain">Play Again</p>
+            <p class="returnHome">Back To Home</p>
+        </div>
+    </div>
+    <script src="script/index.js"></script>
+</body>
+
+</html>

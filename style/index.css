@@ -1,0 +1,269 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap");
+body,
+* {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --bgColor: #654bff;
+    --primaryClr: #222;
+    --secendaryClr: #000;
+    --alterClr: #d85139;
+    --poppinsFont: poppins, Arial, Helvetica, sans-serif;
+    --playfair: 'Playfair Display', Arial, Helvetica, sans-serif;
+}
+
+body,
+html {
+    background-color: var(--bgColor);
+    scroll-behavior: smooth;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    min-width: 320px;
+}
+
+.gameMenuContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+
+.gameMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    max-width: 480px;
+}
+
+.newGame {
+    font: .95em var(--poppinsFont);
+    color: rgb(201, 201, 201);
+    margin-top: 15px;
+    cursor: pointer;
+    width: 100%;
+    text-align: center;
+    padding: 7px 0;
+    background-color: #5640cf;
+    border-radius: 5px;
+}
+
+.gameLevel {
+    background-color: #5640cf;
+    border: none;
+    outline: none;
+    height: 35px;
+    width: 100%;
+    border-radius: 7px;
+    padding: 0 10px;
+}
+
+.gameLevel option {
+    height: 35px;
+    background-color: #654bff;
+    padding: 10px;
+    appearance: none;
+    font: 1em var(--poppinsFont);
+}
+
+
+/* game Board */
+
+.gameBoard {
+    width: 96%;
+    aspect-ratio: 1/1;
+    max-width: 480px;
+    margin: 0 auto;
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #333;
+    box-sizing: border-box;
+}
+
+.easy {
+    display: grid;
+    grid-template-columns: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+    grid-template-rows: 10% 10% 10% 10% 10% 10% 10% 10% 10% 10%;
+}
+
+.hard {
+    display: grid;
+    grid-template-columns: 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4%;
+    grid-template-rows: 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4% 4%;
+}
+
+.difficult {
+    display: grid;
+    grid-template-columns: 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2%;
+    grid-template-rows: 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2% 2%;
+}
+
+.gameCell {
+    box-sizing: border-box;
+    position: relative;
+}
+
+.door {
+    height: 90%;
+    width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.person {
+    height: 90%;
+    width: 90%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+
+/* gameMobileControllContainer */
+
+.gameMobileControllContainer {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameMobileControllContainer button {
+    height: 30px;
+    width: 30px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.411);
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleButtonContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    margin: 5px 0;
+}
+
+.gameMobileControllContainer button img {
+    width: 90%;
+    height: 90%;
+}
+
+
+/* gameFinishedModalContainer */
+
+.gameFinishedModalContainer {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.gameFinishedModalContainer.active {
+    display: flex;
+    animation: fadeIn .6s;
+}
+
+.gameModal {
+    width: 70%;
+    max-width: 480px;
+    background-color: #654bff;
+    border-radius: 10px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.479);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: var(--poppinsFont);
+}
+
+.modalTitle {
+    margin-top: 10px;
+    font-size: 1.1em;
+}
+
+.gameModal img {
+    width: 70%;
+    aspect-ratio: 1/1;
+}
+
+.returnHome {
+    font-size: .85em;
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+
+.playAgain {
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+
+/* homebtn */
+
+.home {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    background-color: rgba(0, 0, 0, 0.164);
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.home.active {
+    display: flex;
+}
+
+.home img {
+    width: 70%;
+}
+
+@media (hover: none) {
+    .gameMobileControllContainer.active {
+        display: flex;
+    }
+}
+
+@media screen and (min-width:469px) {
+    .newGame {
+        font: 1.2em var(--poppinsFont);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        transform: scale(0);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
